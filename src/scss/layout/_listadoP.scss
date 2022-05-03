@@ -1,0 +1,53 @@
+@use "../base/variables"as v;
+@use "../base/mixins"as m;
+
+.pacientes {
+  padding: 2rem 1rem;
+
+  @include m.min_tablet {
+    height: 100vh;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: .2rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: lighten($color: v.$purple, $amount: 10%);
+      border-radius: 1rem;
+    }
+
+  }
+
+  .description {
+    margin-top: 1.6rem;
+
+    span {
+      color: v.$purple;
+      font-weight: 500;
+    }
+  }
+
+
+  .paciente {
+    border-radius: .5rem;
+    background-color: v.$white;
+    margin-top: 2rem;
+    padding: 2rem 4rem;
+
+    p {
+      margin-bottom: 2rem;
+      font-weight: 500;
+      color: v.$purple;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    span {
+      font-weight: 300;
+      color: v.$black;
+    }
+  }
+}
