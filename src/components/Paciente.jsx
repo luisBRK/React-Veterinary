@@ -1,36 +1,46 @@
-const Paciente = () => {
+const Paciente = ({ patient, setPatient }) => {
+  const { petName, customerName, email, date, symptom } = patient;
   return (
     <div className="paciente">
       <p>
         Nombre de la mascota: {""}
-        <span>Venus</span>
+        <span>{petName}</span>
       </p>
 
       <p>
         Propietario: {""}
-        <span>Luis</span>
+        <span>{customerName}</span>
       </p>
 
       <p>
         Email: {""}
-        <span>email@email.com</span>
+        <span>{email}</span>
       </p>
 
       <p>
         Fecha: {""}
-        <span>12-05-2022</span>
+        <span>{date}</span>
       </p>
 
       <p>
         Sintomas: {""}
         <span></span>
-        <span>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente
-          unde quidem sit dicta molestiae, ea inventore eum id modi alias magnam
-          error voluptas, illum iure consequuntur delectus nobis accusamus
-          blanditiis.
-        </span>
+        <span>{symptom}</span>
       </p>
+
+      <div className="buttons">
+        <button
+          className="edit"
+          type="button"
+          onClick={() => setPatient(patient)}
+        >
+          Editar
+        </button>
+
+        <button className="delete" type="button">
+          Eliminar
+        </button>
+      </div>
     </div>
   );
 };

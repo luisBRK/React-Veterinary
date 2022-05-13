@@ -16,11 +16,13 @@ body {
     color: v.$black;
 
     &::-webkit-scrollbar {
+        background-color: v.$gray;
         width: .8rem;
     }
 
     &::-webkit-scrollbar-thumb {
         background: lighten($color: v.$purple, $amount: 1%);
+
         border-radius: 1rem;
     }
 }
