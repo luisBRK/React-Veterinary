@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Error from "./Error";
 
-function Form({ patients, setPatients, patient }) {
+function Form({ patients, setPatients, patient, setPatient }) {
   // Hooks
   const [petName, setPetName] = useState("");
   const [customerName, setcustomerName] = useState("");
@@ -11,6 +11,19 @@ function Form({ patients, setPatients, patient }) {
 
   const [error, setError] = useState(false);
 
+  // use Effect rellenar form
+  useEffect(() => {
+    if (Object.keys(patient).length > 0) {
+      setPetName(patient.petName);
+      setcustomerName(patient.customerName);
+      setEmail(patient.email);
+      setDate(patient.date);
+      setSymptom(patient.symptom);
+    } else {
+      console.log("no hay nada");
+    }
+  }, [patient]);
+
   // functions
 
   const generarId = () => {
@@ -19,6 +32,7 @@ function Form({ patients, setPatients, patient }) {
     return date + random;
   };
 
+  // set a new patient
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -39,11 +53,25 @@ function Form({ patients, setPatients, patient }) {
       email,
       date,
       symptom,
-      id: generarId(),
     };
 
-    // patients array
-    setPatients([...patients, patientObj]);
+    // update or create patient
+    if (patient.id) {
+      // edit
+      patientObj.id = patient.id;
+      const updatePatients = patients.map((patientState) =>
+        patientState.id === patient.id ? patientObj : patientState
+      );
+
+      setPatients(updatePatients);
+      // borrar paciente para editar
+      setPatient({});
+    } else {
+      // create
+      // patients array
+      patientObj.id = generarId();
+      setPatients([...patients, patientObj]);
+    }
 
     // refactor form
     setPetName("");
@@ -115,7 +143,11 @@ function Form({ patients, setPatients, patient }) {
           />
         </div>
 
-        <input type="submit" className="button" value="Agregar paciente" />
+        <input
+          type="submit"
+          className="button"
+          value={patient.id ? "Edit patient" : "Add patient"}
+        />
       </form>
     </div>
   );

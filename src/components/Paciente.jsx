@@ -1,5 +1,14 @@
-const Paciente = ({ patient, setPatient }) => {
-  const { petName, customerName, email, date, symptom } = patient;
+const Paciente = ({ patient, setPatient, deletePatient }) => {
+  const { petName, customerName, email, date, symptom, id } = patient;
+  const handleDelete = () => {
+    const answer = confirm("Eliminar paciente completamente?");
+
+    if (answer) {
+      deletePatient(id);
+    } else {
+      return;
+    }
+  };
   return (
     <div className="paciente">
       <p>
@@ -37,7 +46,7 @@ const Paciente = ({ patient, setPatient }) => {
           Editar
         </button>
 
-        <button className="delete" type="button">
+        <button className="delete" type="button" onClick={handleDelete}>
           Eliminar
         </button>
       </div>

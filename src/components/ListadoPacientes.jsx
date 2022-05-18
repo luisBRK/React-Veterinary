@@ -1,7 +1,8 @@
 import Paciente from "./Paciente";
 
-function ListadoPacientes({ patients, setPatient }) {
-  console.log(patients);
+function ListadoPacientes({ patients, setPatient, deletePatient }) {
+  // console.log(patients);
+
   return (
     <div className="pacientes">
       {patients && patients.length ? (
@@ -19,6 +20,7 @@ function ListadoPacientes({ patients, setPatient }) {
                 key={patient.id}
                 patient={patient}
                 setPatient={setPatient}
+                deletePatient={deletePatient}
               />
             );
           })}
