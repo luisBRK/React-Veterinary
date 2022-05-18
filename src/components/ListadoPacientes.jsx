@@ -1,8 +1,6 @@
 import Paciente from "./Paciente";
 
 function ListadoPacientes({ patients, setPatient, deletePatient }) {
-  // console.log(patients);
-
   return (
     <div className="pacientes">
       {patients && patients.length ? (

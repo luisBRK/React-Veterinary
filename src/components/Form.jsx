@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Error from "./Error";
 
-function Form({ patients, setPatients, patient, setPatient }) {
+const Form = ({ patients, setPatients, patient, setPatient }) => {
   // Hooks
   const [petName, setPetName] = useState("");
   const [customerName, setcustomerName] = useState("");
@@ -19,8 +19,6 @@ function Form({ patients, setPatients, patient, setPatient }) {
       setEmail(patient.email);
       setDate(patient.date);
       setSymptom(patient.symptom);
-    } else {
-      console.log("no hay nada");
     }
   }, [patient]);
 
@@ -38,7 +36,6 @@ function Form({ patients, setPatients, patient, setPatient }) {
 
     // validation
     if ([petName, customerName, email, date, symptom].includes("")) {
-      console.log("campo vacio");
       setError(true);
       return;
     }
@@ -151,6 +148,6 @@ function Form({ patients, setPatients, patient, setPatient }) {
       </form>
     </div>
   );
-}
+};
 
 export default Form;

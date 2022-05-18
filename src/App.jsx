@@ -3,11 +3,28 @@
 import Header from "./components/Header";
 import ListadoPacientes from "./components/ListadoPacientes";
 import Form from "./components/Form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [patients, setPatients] = useState([]);
+  const getLC = JSON.parse(localStorage.getItem("patients")) ?? [];
+  const [patients, setPatients] = useState(getLC);
   const [patient, setPatient] = useState({});
+
+  // use effect
+
+  // only ONE TIME!
+  // useEffect(() => {
+  //   const getLocalSt = () => {
+  //     const patientsLS = JSON.parse(localStorage.getItem("patients")) ?? [];
+  //     setPatients(patientsLS);
+  //   };
+  //   getLocalSt();
+  // }, []);
+
+  // localstorage
+  useEffect(() => {
+    localStorage.setItem("patients", JSON.stringify(patients));
+  }, [patients]);
 
   // functios
   const deletePatient = (patientId) => {
