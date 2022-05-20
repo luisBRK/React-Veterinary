@@ -8,3 +8,8 @@ The site helps you manage patients within your browser, you can add new ones, ed
 You will not need to install anything and you will be able to manage data from any device in your browser
 
 > URL: https://react-vterinary-1.netlify.app/
+
+***
+---
+## Technologies
+> SASS, JS, REACT, Gulp.
